@@ -108,5 +108,4 @@ def retrieve_chunks_for_doc(doc_id: str, query: str, k=3, fetch_k=10):
     if chunks is None:
         return [], []
     candidate_chunks = [chunks[i] for i in indices[0] if i < len(chunks)]
-    # no reranker here for simplicity; you can add CrossEncoder later
     return candidate_chunks[:k], (scores[0][:k].tolist() if len(scores)>0 else [])
