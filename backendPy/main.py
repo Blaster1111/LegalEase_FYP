@@ -1,11 +1,21 @@
 # main.py
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from auth import router as auth_router
 from docs_router import router as docs_router
 from qa_router import router as qa_router
 from config import settings
 
 app = FastAPI(title="Legal RAG API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],      
+    allow_credentials=True,
+    allow_methods=["*"],      
+    allow_headers=["*"],      
+)
 
 app.include_router(auth_router)
 app.include_router(docs_router)

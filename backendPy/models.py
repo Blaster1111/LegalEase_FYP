@@ -34,3 +34,9 @@ class QARequest(BaseModel):
 class QAResponse(BaseModel):
     answer: str
     contexts: List[str]
+
+class QAChat(BaseModel):
+    question: str
+    answer: str
+    contexts: List[str]
+    timestamp: datetime
