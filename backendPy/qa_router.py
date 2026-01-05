@@ -56,13 +56,19 @@ def ask_question(req: QARequest, user: dict = Depends(get_current_user)):
         [f"Context {i+1} (relevance: {score:.2f}): {ctx}" for i, (ctx, score) in enumerate(zip(contexts, scores))]
     )
 
-    prompt = f"""You are a precise legal assistant. Answer questions based ONLY on the provided contract excerpts.
+    prompt = f"""<|system|>
+You are a precise legal assistant. Answer questions based ONLY on the provided contract excerpts.
 Be concise, cite relevant sections if possible, and if information is missing, say: "The document does not specify this."
+<|end|>
 
+<|user|>
 Contract excerpts:
 {context_text}
 
 Question: {req.question}
+<|end|>
+
+<|assistant|>
 """
     answer = generate_with_openrouter(prompt, max_tokens=300, temperature=0.0)
 
