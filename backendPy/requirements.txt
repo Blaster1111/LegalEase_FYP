@@ -37,3 +37,10 @@ langchain-text-splitters
 bitsandbytes
 datasets
 numpy
+
+# Summarzation
+sentencepiece
+tiktoken
+protobuf
+pypdf
+

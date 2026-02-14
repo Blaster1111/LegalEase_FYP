@@ -45,7 +45,7 @@ function QAContent() {
 
     const docId = searchParams.get('document_id');
     if (!docId) {
-      router.push('/dashboard');
+      router.push('/rag');
       return;
     }
     setDocumentId(docId);
