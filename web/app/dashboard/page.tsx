@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -9,15 +10,19 @@ export default function DashboardPage() {
   const router = useRouter();
   const { isAuthenticated, logout } = useAuth();
 
-  if (!isAuthenticated) {
-    router.push('/login');
-    return null;
-  }
+  // Fix: redirect inside useEffect
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/login');
+    }
+  }, [isAuthenticated, router]);
 
   const handleLogout = () => {
     logout();
     router.push('/');
   };
+
+  if (!isAuthenticated) return null;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-900 dark:to-slate-800">
@@ -49,7 +54,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Service Cards */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
 
           {/* RAG Service */}
           <Card className="shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
@@ -99,6 +104,32 @@ export default function DashboardPage() {
                 onClick={() => router.push('/summary')}
               >
                 Go to Summarizer
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Simplification Service */}
+          <Card className="shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
+            <CardHeader>
+              <CardTitle className="text-2xl flex items-center gap-2">
+                📄 Simplify Legal Text
+              </CardTitle>
+              <CardDescription>
+                Convert complex legal language into plain, easy-to-understand text.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-1">
+                <li>• Simplifies legal terminology</li>
+                <li>• Easy-to-read plain language output</li>
+                <li>• Supports PDF, DOCX, and TXT</li>
+              </ul>
+
+              <Button
+                className="w-full bg-green-600 hover:bg-green-700"
+                onClick={() => router.push('/simplify')}
+              >
+                Go to Simplifier
               </Button>
             </CardContent>
           </Card>

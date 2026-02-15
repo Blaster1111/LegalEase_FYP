@@ -152,4 +152,39 @@ export const api = {
     if (!resp.ok) await handleNonOk(resp);
     return resp.json();
   },
+
+  simplifyFile: async (file: File): Promise<{ filename: string; simplified_text: string }> => {
+  const token = getToken();
+  if (!token) throw new Error('Not authenticated');
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  const resp = await fetch(`${API_BASE_URL}/simplify`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}` },
+    body: formData,
+  });
+
+  if (!resp.ok) await handleNonOk(resp);
+  return resp.json();
+},
+
+simplifyText: async (text: string): Promise<{ simplified_text: string }> => {
+  const token = getToken();
+  if (!token) throw new Error('Not authenticated');
+
+  const formData = new FormData();
+  formData.append('text', text);
+
+  const resp = await fetch(`${API_BASE_URL}/simplify`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}` },
+    body: formData,
+  });
+
+  if (!resp.ok) await handleNonOk(resp);
+  return resp.json();
+},
+
 };

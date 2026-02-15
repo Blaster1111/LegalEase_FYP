@@ -10,15 +10,13 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
-export default function SummaryPage() {
+export default function SimplifyPage() {
   const router = useRouter();
   const { isAuthenticated } = useAuth();
 
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
-  const [simplifyLoading, setSimplifyLoading] = useState(false);
   const [status, setStatus] = useState('');
-  const [summary, setSummary] = useState('');
   const [simplified, setSimplified] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -53,40 +51,21 @@ export default function SummaryPage() {
 
     setLoading(true);
     setError('');
-    setSummary('');
     setSimplified('');
     setSuccess('');
     setStatus('PROCESSING');
 
     try {
-      const resp = await api.summarizeFile(file);
+      const resp = await api.simplifyFile(file);
 
-      setSuccess(`Document "${resp.filename}" summarized successfully!`);
-      setSummary(resp.summary);
+      setSuccess(`Document "${resp.filename}" simplified successfully!`);
+      setSimplified(resp.simplified_text);
       setStatus('READY');
     } catch (e: any) {
-      setError(e.message || 'Summarization failed');
+      setError(e.message || 'Simplification failed');
       setStatus('FAILED');
     } finally {
       setLoading(false);
-    }
-  };
-
-  // Corrected simplify logic (uses summary text)
-  const handleSimplify = async () => {
-    if (!summary) return;
-
-    setSimplifyLoading(true);
-    setError('');
-    setSimplified('');
-
-    try {
-      const resp = await api.simplifyText(summary);
-      setSimplified(resp.simplified_text);
-    } catch (e: any) {
-      setError(e.message || 'Simplification failed');
-    } finally {
-      setSimplifyLoading(false);
     }
   };
 
@@ -99,10 +78,10 @@ export default function SummaryPage() {
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Document Summarizer
+              Legal Simplifier
             </h1>
             <p className="text-slate-600 dark:text-slate-400 mt-2">
-              Upload a legal document and get a concise AI summary
+              Convert complex legal text into plain, easy-to-understand language
             </p>
           </div>
           <Button variant="outline" onClick={() => router.push('/dashboard')}>
@@ -156,9 +135,9 @@ export default function SummaryPage() {
               <Button
                 onClick={handleUpload}
                 disabled={!file || loading}
-                className="w-full bg-blue-600 hover:bg-blue-700"
+                className="w-full bg-green-600 hover:bg-green-700"
               >
-                {loading ? 'Summarizing...' : 'Upload & Summarize'}
+                {loading ? 'Simplifying...' : 'Upload & Simplify'}
               </Button>
 
               {status && (
@@ -180,55 +159,32 @@ export default function SummaryPage() {
             </CardContent>
           </Card>
 
-          {/* Output Card */}
+          {/* Simplified Text Card */}
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle>📝 Summary</CardTitle>
+              <CardTitle>📄 Simplified Text</CardTitle>
               <CardDescription>
-                Generated summary of your document
+                Plain-language version of your legal document
               </CardDescription>
             </CardHeader>
 
-            <CardContent className="space-y-4">
+            <CardContent>
               {loading && (
                 <div className="text-center py-12 text-slate-500">
                   ⏳ Processing document…
                 </div>
               )}
 
-              {!loading && !summary && (
+              {!loading && !simplified && (
                 <div className="text-center py-12 text-slate-400">
-                  Upload a document to see the summary here.
+                  Upload a document to see the simplified version here.
                 </div>
               )}
 
-              {summary && (
-                <>
-                  <p className="whitespace-pre-wrap text-slate-700 dark:text-slate-300">
-                    {summary}
-                  </p>
-
-                  {/* Simplify Button */}
-                  <Button
-                    onClick={handleSimplify}
-                    disabled={simplifyLoading}
-                    className="w-full bg-green-600 hover:bg-green-700 mt-4"
-                  >
-                    {simplifyLoading ? 'Simplifying...' : 'Simplify This Summary'}
-                  </Button>
-                </>
-              )}
-
-              {/* Simplified Output */}
               {simplified && (
-                <div className="mt-6">
-                  <h3 className="text-lg font-semibold mb-2">
-                    📄 Simplified Version
-                  </h3>
-                  <p className="whitespace-pre-wrap text-slate-700 dark:text-slate-300">
-                    {simplified}
-                  </p>
-                </div>
+                <p className="whitespace-pre-wrap text-slate-700 dark:text-slate-300">
+                  {simplified}
+                </p>
               )}
             </CardContent>
           </Card>
