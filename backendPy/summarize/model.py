@@ -1,121 +1,118 @@
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoConfig
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
 import re
+from typing import List
 
 MODEL_NAME = "nsi319/legal-pegasus"
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 print("Loading summarization model...")
-
-# Load config and disable tied embeddings to suppress warnings
-config = AutoConfig.from_pretrained(MODEL_NAME)
-config.tie_word_embeddings = False
-
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_NAME, config=config).to(device)
+model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_NAME).to(device)
 model.eval()
-
 print(f"Model loaded on {device}.")
 
 
 # -------- text cleaning --------
 def clean_text(text: str) -> str:
-    # Remove page numbers
-    text = re.sub(r'Page \d+ of \d+', '', text)
+    # Remove page numbers like "Page 1 of 6"
+    text = re.sub(r'Page\s*\d+\s*of\s*\d+', '', text, flags=re.IGNORECASE)
 
-    # Remove template headers and footers
-    text = re.sub(r'This template is authored by.*?Lawyered\.in\.', '', text, flags=re.DOTALL)
-    text = re.sub(r'In case of any queries.*?expert advisors\.', '', text, flags=re.DOTALL)
+    # Remove common template headers/footers (Lawyered.in etc.)
+    text = re.sub(r'This template is authored by.*?Lawyered\.in\.', '', text, flags=re.DOTALL | re.IGNORECASE)
+    text = re.sub(r'In case of any queries.*?expert advisors\.', '', text, flags=re.DOTALL | re.IGNORECASE)
 
-    # Remove placeholders
-    text = re.sub(r'\[Please fill in.*?\]', '', text)
+    # Remove placeholders like [Please fill in ...] and <<...>> and <...>
+    text = re.sub(r'\[Please fill in.*?\]', '', text, flags=re.DOTALL)
     text = re.sub(r'<<.*?>>', '', text)
     text = re.sub(r'<.*?>', '', text)
 
-    # Remove signature blocks
-    text = re.sub(r'Signature \d+.*?Date', '', text, flags=re.DOTALL)
-    text = re.sub(r'Désignations.*?Date', '', text, flags=re.DOTALL)
+    # Remove obvious signature blocks (best-effort)
+    text = re.sub(r'Signature\s*\d+.*?Date', '', text, flags=re.DOTALL | re.IGNORECASE)
+    text = re.sub(r'Désignations.*?Date', '', text, flags=re.DOTALL | re.IGNORECASE)
 
-    # Normalize spaces
+    # Normalize whitespace
     text = re.sub(r'\s+', ' ', text)
-
     return text.strip()
 
 
 # -------- chunking with overlap --------
-def chunk_text(text: str, max_tokens: int = 400, overlap: int = 50):
+def chunk_text(text: str, max_tokens: int = 400, overlap: int = 50) -> List[str]:
     """
-    Split text into overlapping chunks for better context preservation.
-    Max 400 tokens per chunk to stay within model limits.
+    Split text into overlapping chunks measured in tokenizer tokens.
     """
-    # Encode without special tokens for accurate count
-    tokens = tokenizer.encode(text, add_special_tokens=False)
-    chunks = []
+    if not text:
+        return []
 
+    # Encode without adding special tokens so counts match generation limits
+    tokens = tokenizer.encode(text, add_special_tokens=False)
+    chunks: List[str] = []
     start = 0
-    while start < len(tokens):
-        end = start + max_tokens
+    total = len(tokens)
+
+    while start < total:
+        end = min(start + max_tokens, total)
         chunk_tokens = tokens[start:end]
-        
-        chunk_text = tokenizer.decode(chunk_tokens, skip_special_tokens=True)
-        chunks.append(chunk_text)
-        
-        if end >= len(tokens):
+        chunk_text = tokenizer.decode(chunk_tokens, skip_special_tokens=True, clean_up_tokenization_spaces=True)
+        chunk_text = chunk_text.strip()
+        if chunk_text:
+            chunks.append(chunk_text)
+        if end == total:
             break
-        start = end - overlap
+        start = max(0, end - overlap)
 
     return chunks
 
 
 # -------- remove duplicate sentences --------
 def remove_duplicate_sentences(text: str) -> str:
-    """Remove duplicate sentences from summary."""
     sentences = re.split(r'(?<=[.!?])\s+', text)
     seen = set()
-    unique_sentences = []
-    
-    for sentence in sentences:
-        normalized = sentence.lower().strip()
-        if normalized and normalized not in seen:
-            seen.add(normalized)
-            unique_sentences.append(sentence)
-    
-    return " ".join(unique_sentences)
+    uniq = []
+    for s in sentences:
+        norm = s.strip().lower()
+        if not norm:
+            continue
+        if norm in seen:
+            continue
+        seen.add(norm)
+        uniq.append(s.strip())
+    return " ".join(uniq)
 
 
 # -------- summarization --------
-def summarize_text(text: str, max_length: int = 150, min_length: int = 50) -> str:
+def summarize_text(text: str, max_length: int = 150, min_length: int = 50, final_sentence_limit: int = 8) -> str:
     """
-    Summarize legal text with improved parameters.
+    Summarize legal text by:
+      1. Cleaning the text
+      2. Chunking with overlap
+      3. Summarizing each chunk
+      4. Deduplicating and limiting final summary length
     """
     if not text or not text.strip():
         return ""
-    
+
     text = clean_text(text)
-    
-    # If text is very short, return as-is
-    if len(text.split()) < 30:
+
+    # If the text is already short, return cleaned text (or optionally run a single-pass summarize)
+    if len(text.split()) < 40:
         return text
-    
+
     chunks = chunk_text(text, max_tokens=400, overlap=50)
-    
     if not chunks:
         return ""
-    
-    summaries = []
 
+    summaries = []
     for chunk in chunks:
-        # Skip very short chunks
         if len(chunk.split()) < 10:
             continue
-        
-        # Tokenize with strict truncation to prevent length errors
+
         inputs = tokenizer(
             chunk,
             return_tensors="pt",
             truncation=True,
-            max_length=512,  # Match the model's actual max input length
+            max_length=512,  # safe guard
             padding=False
         ).to(device)
 
@@ -130,11 +127,20 @@ def summarize_text(text: str, max_length: int = 150, min_length: int = 50) -> st
                 no_repeat_ngram_size=3
             )
 
-        summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
-        summaries.append(summary)
+        summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True, clean_up_tokenization_spaces=True)
+        if summary:
+            summaries.append(summary.strip())
 
-    # Join and deduplicate
+    if not summaries:
+        return ""
+
+    # Join chunk summaries, dedupe sentences, and limit length
     full_summary = " ".join(summaries)
     full_summary = remove_duplicate_sentences(full_summary)
-    
-    return full_summary.strip()
+
+    # Limit final output to N sentences for consistent size/UX
+    sentences = re.split(r'(?<=[.!?])\s+', full_summary)
+    final_sentences = [s.strip() for s in sentences if s.strip()][:final_sentence_limit]
+    final_summary = " ".join(final_sentences).strip()
+
+    return final_summary
