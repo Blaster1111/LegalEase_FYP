@@ -1,143 +1,145 @@
-EMPLOYEE NON­DISCLOSURE & NON­COMPETE 
-AGREEMENT 
-ThisEMPLOYEENON­DISCLOSURE&NON­COMPETEAGREEMENThasbeen             
-entered into this day ​[Date] [Month], [Year]. 
-BETWEEN 
-[CompanyName]​,anIndian​[Company/Firm/LLP/Partnership]havingitsregistered                  
-officeat​[AddressLine1],[AddressLine2],[City],[PinCode],[State​](hereinaftercalled                  
-[CompanyNamewithoutPrivateLimited]whichexpressionunlessrepugnanttothe               
-context shall mean and include its subsidiaries, and its successors and assigns). 
-AND 
-[EmployeeName​],anEmployeeof​[CompanyNamewithoutPrivateLimited]and                
-residingat​[EmployeeAddressLine1],[EmployeeAddressLine2],[City],[PinCode],                  
-[State](hereinafterreferredtoas“Employee”whichexpressionunlessrepugnanttothe                  
-context shall include all beneficiaries of the said employee). 
-1. Definitions 
-IntellectualProperty:​IncludesexistingandfutureIntellectualPropertyinthenatureof                 
-unregisteredorregisteredrightstoanyandallpatents,copyrights,trademarksand                 otherconfidentialand/orproprietaryinformationlimitedtothatformingpartofthe                 
-subject­matteroftheagreement,andinclusiveofallintellectualpropertythatisthe                  
-subjectofownershipbyCompanyand/oritssubsidiaries,venturepartnersand                 
-predecessorsininterest,businessand/ortitle,arisingoutoftheperformanceofthis                 
-agreementand/orotherbusinessarrangements,inclusiveofbutnotlimitedtoanyoral                 
-arrangement which Company may have entered into with the Party or other party. 
-ConfidentialInformation:Confidentialinformationmeans,tradesecrets,know­how,              
-patents,utilitymodels,formulations,processes/methodsofpreparation,testdata,              
-conductedin­houseorby/throughcollaborative/ventureefforts,inclusiveofanyandall                
-improvements/modifications,alterationssubstantialorotherwiseetc.,thatmayhave             
-beeneffectedtothesaidConfidentialInformationbyCompany.Alsoasusedinthis                   
-agreement,theterm“ConfidentialInformation”means(i)thetermsandconditionsof                
-thisAgreementinclusiveofbutnotlimitedtoanyotherpriorconfidentialagreement                  
-whetherexplicitorimpliedbytermsandrelationshipofPartywiththecompanyandhis                  
-statedorpresentfunctions,thatissubsistingonthedateofthisagreement;(ii)                   
-Company’sbusinessplans,strategies,methodsand/orpractices;(iii)anyinformation                
-relatingtoCompanyoritsbusinessthatisnotgenerallyknowntothepublic,including,                    
-butnotlimitedtoinformationaboutCompany’sPersonnel,products,customers,                
-marketingstrategies,servicesorfuturebusinessplans,and(iv)Processinformation                 
-definedasdata/testdata/reports/studiesin­houseorcontracted/details/quantified            
-steps/processdetailswhetheraffixedonpaperortransferredbywayoforaland/or                
-practicalinstructionwithreferencetoanyproductwhichcompanymayownorbe                  
-associatedwithsuchasmanufacturinginformation,procurementspecifications,quality              
-controlspecifications,inspectionandtestprotocolsinclusiveofotherdatathat                
-Companyhasownershipof/retainsandisavailableandbeingusedbyCompanywith                  
-referencetoitsbusiness/products/R&Deffortsandgeneralandspecificinformationnot              
-limitedtoprocesses,machines,manufacturers,compositionofmatter,know­how,               
-methods,techniques,systems,software(whetherinobject,sourceorexecutablecode)                 
-documentation,data(irrespectiveofwhetherhumanormachine­readable)pertainingto               theCompany’sproducts,manufactureandsaleofproductsenvisagedbycompany’s                  
-know­how or any other improved know­how. 
-Employee:Employeemeansanyindividualwhowasorisanemployeeof​[Company                  
-namewithoutprivatelimited]whosestatusispermanentorcontractualinnatureonthe                 
-dateofcommencementofthebusinessby[​Companynamewithoutprivatelimited​]its                 
-venture partners or its subsidiaries or beneficiaries. 
- 
-WHEREAS 
-a. Employeeduringhis/hernormalcourseofbusinesshasaccesstoIntellectual              
-Property and Confidential Information.  
-b. Theunauthorizeddisclosurebyemployeeorex­employeeofthesaidintellectual                 
-propertyorconfidentialinformationcouldexpose​[CompanyName]toirreparableharm                
-in monetary terms as well as in terms of reputation and goodwill. 
-c. [Companyname]thuswishestosafeguardagainstthewrongfulorinadvertent               
-disclosure of its intellectual property or confidential information. 
-  
-2. Acknowledgement of Confidentiality 
-[Employeename]herebyacknowledgesthattheintellectualpropertyand/orconfidential               
-information are in the nature of confidential and proprietary information. 
-  
-3. Agreement not to disclose 
-a. [Employeename​]herebyagreesthathe/sheshallholdinconfidenceandhereby              
-agreesthathe/sheshallnotuse,commercializeordiscloseexceptundertermsof                
-employmentof[​CompanyName​],anyconfidentialinformationorintellectualpropertyto                 
-anypersonorentity,orelseunderprovisiongovernedbythismemorandumexceptas                  
-[Company name​] may approve in writing. 
-b. Evenuponassignmentofconfidentialinformationorintellectualpropertyto                
-[Companyname],​[employeename]undertakestouseatleastthesamedegreeofcare                 
-insafeguardingtheconfidentialinformationashe/sheusesorwouldusein                 safeguardinghis/herownconfidentialinformation,andshalltakeallstepsnecessaryto                
-protecttheconfidentialinformationorintellectualpropertyfromunauthorizedor                
-inadvertent disclosure. 
-  
-4. Remedies for Breach of Confidentiality 
-[​Employeename]agreesandacknowledgesthatanydisclosureofanyConfidential               
-Informationprohibitedhereinoranybreachoftheprovisionshereinmayresultin                
-irreparableinjuryanddamageto[​Companyname​]whichwillnotbeadequately                
-compensableinmonetarydamages,that​[Companyname​]willhavenoadequate                
-remedyatlawthereof,andthat​[CompanyName]may,inadditiontoallotherremedies                  
-availabletoitatlaworinequity,obtainsuchpreliminary,temporaryorpermanent                  
-mandatoryorrestraininginjunctions,ordersordecreesasmaybenecessarytoprotect                  
-[Companyname]against,oronaccountof,anybreachbytheemployee/ex­employee                
-oftheprovisionscontainedherein,andemployeeagreestoreimbursethereasonable                  
-legalfeesandothercostsincurredby​[CompanyName]inenforcingtheprovisionsof                   
-the proposed transaction. 
-  
-5. Non­Compete 
-Employeeinclusiveofhis/herdirectbeneficiariesinbusiness,interestandtitlein                 
-recognitionofthetransferofConfidentialandProprietaryInformationto​[Company                 
-Name]herebyagreesnottodirectlyorindirectlycompetewiththebusinessof                 
-[Companyname]anditssuccessorsandassignsduringthetermoftheagreementand                 
-foraperiodof5years[FiveYears]followingtheexpirationorterminationofthiscontract                     
-and notwithstanding the cause or reason for termination. 
-  
-6. Jurisdiction 
-Anyactionarisingoutoforpertainingtothisagreementshallbeinitiatedand                  
-maintainedinacourtofcompetentjurisdictionattheHighCourtof​[HighCourtCity]at                   
-[High Court City, State].   
-  
-7. General Provision 
-a. Thisdocumentconstitutestheentireagreementbetweenthepartieswithrespect                
-tothesubjectmatterhereofandsupersedesallothercommunications,whetherwritten                
-or oral. 
-b. ThisAgreementisexpresslylimitedtoitstermsandmaybemodifiedor                 
-amended only by writing signed by both parties. 
-c. NeitherthisAgreementnoranyrightsorobligationsinherentin​[Company                
-Name​],ConfidentialInformation,know­how,tradesecretsandotherpropertyand                
-intellectualpropertyhereundermaybetransferredorassignedwithout​[Company                
-Name]​ written consent respectively. Any attempt to the contrary shall be void. 
-  
-8. Severability 
-a. Theprovisionsofthisagreementshallbedeemedseverable,andthe                
-unenforceabilityofanyoneormoreofitsprovisionsshallnotaffecttheenforceabilityof                  
-anyoftheotherprovisions.Ifanyprovisionisdeclaredtobeunenforceable,theparties                    
-shallsubstituteanenforceableprovisionthat,tothemaximumextentpossiblein                  
-accordancewithapplicablelaw,preservestheoriginalintentionsandeconomic                
-positionsoftheparties.Waiverofanyprovisionhereofinoneinstanceshallnot                  
-preclude enforcement thereof on future occasions. 
-b. Thepartiesheretoconsidertherestrictioncontainedtobereasonableasto                 
-protect [​Company name]​ interests and rights. 
-  
-9. Force Majeure 
-Neitherpartywillberesponsibleforanyfailuretoperformitsobligationsunderthis                  
-agreementduetocausesbeyonditscontrol,includingbutnotlimitedtoactsofGod,                 
-war, riot, embargoes, acts of civil or military authorities, fire, floods or accidents. 
-    
-  
-10.​  ​Notice 
-Allnoticesandcommunicationsrequiredorpermittedunderthisagreementshallbein                  
-writingandanycommunicationordeliveryshallbedeemedtohavebeendulymadeif                  
-actually delivered, or after 15 days after mailing, if mailed by registered post. 
-  
-IN WITENESS WHEREOF, the parties hereto have caused this Agreement to be 
-executed as of the date first written above their duly authorized representatives. 
-  
-For Company Name 
-Designation 
-Address Line 1 
-Address Line 2 
-City, State PIN
+EMPLOYEE NON-DISCLOSURE & NON-COMPETE AGREEMENT
+
+This EMPLOYEE NON-DISCLOSURE & NON-COMPETE AGREEMENT has been entered
+into this day [Date] [Month], [Year].
+
+BETWEEN
+
+[CompanyName], an Indian [Company/Firm/LLP/Partnership] having its
+registered office at [AddressLine1], [AddressLine2], [City], [PinCode],
+[State] (hereinafter called [CompanyName without Private Limited], which
+expression unless repugnant to the context shall mean and include its
+subsidiaries, and its successors and assigns).
+
+AND
+
+[EmployeeName], an employee of [CompanyName without Private Limited] and
+residing at [EmployeeAddressLine1], [EmployeeAddressLine2], [City],
+[PinCode], [State] (hereinafter referred to as “Employee”, which
+expression unless repugnant to the context shall include all
+beneficiaries of the said employee).
+
+1.  Definitions
+
+Intellectual Property: Includes existing and future Intellectual
+Property in the nature of unregistered or registered rights to any and
+all patents, copyrights, trademarks and other confidential and/or
+proprietary information limited to that forming part of the subject
+matter of the agreement, and inclusive of all intellectual property that
+is the subject of ownership by Company and/or its subsidiaries, venture
+partners and predecessors in interest, business and/or title, arising
+out of the performance of this agreement and/or other business
+arrangements, inclusive of but not limited to any oral arrangement which
+Company may have entered into with the Party or other party.
+
+Confidential Information: Confidential information means trade secrets,
+know-how, patents, utility models, formulations, processes/methods of
+preparation, test data conducted in-house or by/through
+collaborative/venture efforts, inclusive of any and all improvements,
+modifications, alterations substantial or otherwise, etc., that may have
+been effected to the said Confidential Information by Company.
+
+Also, as used in this agreement, the term “Confidential Information”
+means: (i) the terms and conditions of this Agreement inclusive of any
+other prior confidential agreement, whether explicit or implied; (ii)
+Company’s business plans, strategies, methods and/or practices; (iii)
+any information relating to Company or its business that is not
+generally known to the public, including information about Company’s
+personnel, products, customers, marketing strategies, services or future
+business plans; and (iv) process information such as data, reports,
+studies, in-house or contracted details, steps, processes, machines,
+manufacturers, composition of matter, know-how, methods, techniques,
+systems, software (whether in object, source or executable code),
+documentation, and data pertaining to the Company’s products,
+manufacture and sale of products.
+
+Employee: Employee means any individual who was or is an employee of
+[CompanyName without Private Limited] whose status is permanent or
+contractual in nature on the date of commencement of the business by
+[CompanyName without Private Limited], its venture partners or its
+subsidiaries or beneficiaries.
+
+WHEREAS
+
+a.  Employee, during his/her normal course of business, has access to
+    Intellectual Property and Confidential Information.
+b.  The unauthorized disclosure by employee or ex-employee of the said
+    intellectual property or confidential information could expose
+    [CompanyName] to irreparable harm in monetary terms as well as in
+    terms of reputation and goodwill.
+c.  [CompanyName] thus wishes to safeguard against the wrongful or
+    inadvertent disclosure of its intellectual property or confidential
+    information.
+
+2.  Acknowledgement of Confidentiality
+
+[EmployeeName] hereby acknowledges that the intellectual property and/or
+confidential information are in the nature of confidential and
+proprietary information.
+
+3.  Agreement Not to Disclose
+
+a.  [EmployeeName] agrees that he/she shall hold in confidence and shall
+    not use, commercialize or disclose, except under terms of employment
+    of [CompanyName], any confidential information or intellectual
+    property to any person or entity, except as [CompanyName] may
+    approve in writing.
+
+b.  [EmployeeName] undertakes to use at least the same degree of care in
+    safeguarding the confidential information as he/she would use in
+    safeguarding his/her own confidential information.
+
+4.  Remedies for Breach of Confidentiality
+
+[EmployeeName] agrees that any disclosure or breach may result in
+irreparable injury to [CompanyName], and that [CompanyName] may obtain
+injunctive relief in addition to other remedies. The employee agrees to
+reimburse reasonable legal fees and other costs incurred by
+[CompanyName] in enforcing this agreement.
+
+5.  Non-Compete
+
+Employee agrees not to directly or indirectly compete with the business
+of [CompanyName] during the term of the agreement and for a period of
+five (5) years following termination, regardless of the reason for
+termination.
+
+6.  Jurisdiction
+
+Any action arising out of or pertaining to this agreement shall be
+initiated in a court of competent jurisdiction at the High Court of
+[High Court City], [State].
+
+7.  General Provisions
+
+a.  This document constitutes the entire agreement between the parties
+    and supersedes all prior communications.
+b.  This Agreement may be modified only by writing signed by both
+    parties.
+c.  This Agreement and any rights or obligations hereunder may not be
+    transferred or assigned without written consent of [CompanyName].
+
+8.  Severability
+
+a.  The provisions of this agreement are severable, and the
+    unenforceability of any provision shall not affect the remainder.
+b.  The parties consider the restrictions reasonable to protect
+    [CompanyName] interests and rights.
+
+9.  Force Majeure
+
+Neither party will be responsible for failure to perform due to causes
+beyond its control, including acts of God, war, riots, fire, floods or
+accidents.
+
+10. Notice
+
+All notices and communications shall be in writing and shall be deemed
+delivered if actually delivered or 15 days after mailing by registered
+post.
+
+IN WITNESS WHEREOF, the parties have executed this Agreement as of the
+date first written above.
+
+For Company Name Designation: Address Line 1 Address Line 2 City, State
+PIN

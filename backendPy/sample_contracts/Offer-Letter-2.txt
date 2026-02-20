@@ -1,123 +1,84 @@
-This template is authored by  
-Mr. Neeraj Dubey , Laksh mikumaran & Sridharan Attorneys,  
-In collaboration with  Lawyered.in . 
- 
-Page 1 of 3 
-In case of any queries or customization requirements, book a free consultation  with our expert advisors.  
- 
-OFFER  LETTER  
-          Date:   
- 
-To 
-Mr. _______  
-_____________ (residential address)  
-Phone No: ________________________  
- 
- 
-Sub: Offer Letter  
-Dear ________ , 
- 
-We are pleased to offer you the post of __________  based at ________ . 
- 
-The compensation structure is enclosed  for your reference as Annexure.  
- 
-Your employment with the Company will be subject to strict adherence to the policies and 
-procedures of the Company .  
- 
-You will be on probation for six months.  
- 
-This offer is subjected to background verification and medical fitness.  
-                     
-On acceptance of the terms of conditions as per this offer letter, you will be able to terminate 
-your employment with the Company by giving one (1) month notice to the Company and vice 
-versa. You shall not be eligible to avail leave during the notice perio d.  
- 
-We welcome you to join the Company  and would be happy if you can sign the duplicate copy of 
-this letter in token of your acceptance of the offer  of employment with the Company . 
- 
-If you have any question, please clarify from the undersigned.  
- 
- 
-With regards,  
-___________________________  
-____________________________  
-HR - Head  
- 
- 
-  
- 
-This template is authored by  
-Mr. Neeraj Dubey , Laksh mikumaran & Sridharan Attorneys,  
-In collaboration with  Lawyered.in . 
- 
-Page 2 of 3 
-In case of any queries or customization requirements, book a free consultation  with our expert advisors.  
- 
- 
-I accept the aforesaid terms & conditions and this offer of employment. I shall keep the contents 
-of this document confidential.  
- 
-I will join on _____________.  
- 
-Name: _______________  
-Signature: _________________  
-Date: ______________________  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-  
- 
-This template is authored by  
-Mr. Neeraj Dubey , Laksh mikumaran & Sridharan Attorneys,  
-In collaboration with  Lawyered.in . 
- 
-Page 3 of 3 
-In case of any queries or customization requirements, book a free consultation  with our expert advisors.  
- 
- 
- 
-Annexure  
- 
-Components * Monthly  
-(INR)  Annual  
-(INR)  
-Basic    
-HRA    
-Special Allow ance    
-Conv eyance    
-Medical    
-LTA   
-PF (Employer Contribution)    
-Bonus (Annual)    
-Total    
-CTC    
- 
-* - The components can vary depending on the company and the way it would want to structure 
-the salary.
+MASTER SERVICES AGREEMENT
+
+This Master Services Agreement (“Agreement”) is made and entered into on this 1st day of January 2024 (“Effective Date”), by and between ABC Technologies Private Limited, a company incorporated under the Companies Act, 2013, having its registered office at Pune, Maharashtra (hereinafter referred to as the “Client”), and XYZ Digital Solutions Private Limited, having its principal office at Bengaluru, Karnataka (hereinafter referred to as the “Service Provider”).
+
+1. DEFINITIONS
+For the purposes of this Agreement, the following terms shall have the meanings assigned to them:
+1.1 “Services” means software development, implementation, customization, integration, maintenance, support, and consulting services described in Statements of Work.
+1.2 “Deliverables” means all documents, reports, code, software modules, configurations, and materials produced under this Agreement.
+1.3 “Confidential Information” means any proprietary information disclosed by one party to the other.
+1.4 “Intellectual Property Rights” means copyrights, patents, trademarks, trade secrets, and other proprietary rights.
+
+2. SCOPE OF SERVICES
+The Service Provider shall provide Services as described in individual Statements of Work (“SOW”) executed by the parties. Each SOW shall define project scope, timelines, milestones, fees, and acceptance criteria.
+
+The Service Provider shall allocate qualified personnel with appropriate skills and experience. The Client may reasonably request replacement of personnel for performance or security concerns.
+
+3. CHANGE MANAGEMENT
+Any modification to the scope of Services shall require a written Change Order signed by both parties. The Change Order shall specify impact on timeline, deliverables, and fees.
+
+4. TERM AND TERMINATION
+This Agreement shall commence on the Effective Date and continue for three years unless terminated earlier.
+Either party may terminate for convenience with ninety (90) days’ written notice.
+Either party may terminate immediately upon material breach if such breach remains uncured for thirty (30) days after notice.
+
+5. FEES AND PAYMENT TERMS
+The Client shall pay fees as set forth in the applicable SOW.
+Invoices shall be payable within thirty (30) days of receipt.
+Late payments may attract interest at 12% per annum.
+Taxes, duties, and levies shall be borne by the Client except income taxes of the Service Provider.
+
+6. ACCEPTANCE AND TESTING
+Deliverables shall be subject to acceptance testing.
+If Deliverables fail to meet agreed specifications, the Service Provider shall rectify defects within a reasonable period.
+
+7. WARRANTIES
+The Service Provider warrants that:
+(a) Services shall be performed in a professional manner;
+(b) Deliverables shall substantially conform to specifications;
+(c) Services will not infringe third-party intellectual property rights.
+
+8. CONFIDENTIALITY
+Each party shall protect Confidential Information using reasonable care.
+Confidential Information shall not be disclosed to third parties without prior written consent except as required by law.
+Obligations of confidentiality shall survive termination for five (5) years.
+
+9. DATA PROTECTION
+The Service Provider shall comply with applicable data protection laws including the Information Technology Act, 2000.
+The Service Provider shall implement appropriate technical and organizational security measures.
+In the event of a data breach, the Service Provider shall notify the Client within 48 hours.
+
+10. INTELLECTUAL PROPERTY
+All Deliverables created specifically for the Client shall be the exclusive property of the Client upon full payment.
+Pre-existing intellectual property shall remain the property of the owning party.
+
+11. INDEMNIFICATION
+The Service Provider shall indemnify and hold harmless the Client from claims arising from:
+(a) Intellectual property infringement;
+(b) Gross negligence;
+(c) Breach of confidentiality.
+
+12. LIMITATION OF LIABILITY
+Except for indemnification and confidentiality obligations, neither party shall be liable for indirect, incidental, or consequential damages.
+Total liability shall not exceed the total fees paid under the applicable SOW.
+
+13. NON-SOLICITATION
+Neither party shall solicit employees of the other party during the term of this Agreement and for one year thereafter.
+
+14. FORCE MAJEURE
+Neither party shall be liable for delay caused by events beyond reasonable control including natural disasters, war, or government actions.
+
+15. DISPUTE RESOLUTION
+Disputes shall be resolved through arbitration in accordance with the Arbitration and Conciliation Act, 1996.
+The seat of arbitration shall be Mumbai.
+
+16. GOVERNING LAW
+This Agreement shall be governed by the laws of India.
+
+17. ASSIGNMENT
+Neither party may assign this Agreement without prior written consent except in connection with a merger or acquisition.
+
+18. ENTIRE AGREEMENT
+This Agreement constitutes the entire agreement between the parties and supersedes prior discussions.
+
+IN WITNESS WHEREOF, the parties have executed this Agreement as of the Effective Date.

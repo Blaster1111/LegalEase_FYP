@@ -94,21 +94,6 @@ LEGAL_SIMPLIFICATION_RULES = {
     "irreparable harm": "serious damage",
     "adequate remedy at law": "legal solution",
     "specific performance": "court-ordered action",
-    
-    "wellin": "",
-"wellins": "",
-"needtan": "",
-"200ren": "200",
-"day season": "",
-"first activities": "activities",
-"generators may claim": "may claim",
-"fail her own available": "failed to provide",
-"plenty very": "many",
-"passing": "processing",
-"programsA": "programs",
-"process need": "process",
-"usuallying": "usually",
-"law usuallying": "law usually",
 
     # Governance and jurisdiction
     "governed by the laws of": "under the laws of",
@@ -149,7 +134,8 @@ LEGAL_SIMPLIFICATION_RULES = {
     "in the absence of": "without",
     "prior approval": "approval first",
     "subsequently": "later",
-    
+
+    # Additional NDA-specific rules
     "shall refrain from disclosing": "must not share",
     "shall protect the confidentiality": "must keep private",
     "shall remain the property of": "will still belong to",
@@ -160,13 +146,46 @@ LEGAL_SIMPLIFICATION_RULES = {
     "independently developed": "created separately",
     "without restriction": "without limits",
     "legal process": "court order",
-    "injunctive relief": "court order to stop the action",
-    "specific performance": "court order to fulfill the promise",
-    "exclusive jurisdiction": "only these courts can decide",
     "binding agreement": "official contract",
     "principal-to-principal basis": "independent relationship",
-    "governed by the laws of": "subject to the laws of",
     "shall survive termination": "will continue after the agreement ends",
-    "irrevocably submit": "agree without the right to refuse",
     "counterparts": "separate signed copies",
+
+    # ---------------- NEW RULES FROM YOUR DOCUMENTS ----------------
+
+    # Agreement structure
+    "entered into this": "made on",
+    "by and between": "between",
+    "collectively referred to as": "together called",
+    "individually as": "each called",
+    "unless repugnant to the context": "unless the context requires otherwise",
+    "which expression shall include": "which also includes",
+
+    # Recitals
+    "whereas": "because",
+    "now therefore": "so",
+    "intending to be bound legally": "agreeing to be legally bound",
+    "good and valuable consideration": "valid exchange of value",
+    "receipt and adequacy of which is hereby acknowledged": "which both sides accept as sufficient",
+
+    # Definitions
+    "shall mean and include": "means",
+    "unless the context otherwise requires": "unless the context says otherwise",
+    "for the purposes of this agreement": "for this agreement",
+
+    # Duties
+    "fulfil such general duties and responsibilities": "do the assigned duties",
+    "as may reasonably be assigned": "as assigned",
+    "from time to time": "when needed",
+    "keep the board informed": "inform the board",
+    "promote the interests of the company": "support the company",
+    "furtherance of the business": "growth of the business",
+    "devote a reasonable period of his working time": "spend enough working time",
+    "in a competent and professional manner": "professionally",
+
+    # Conduct
+    "bring the company into disrepute": "harm the company’s reputation",
+    "harm its goodwill or reputation": "damage its reputation",
+    "carry on or engage in": "work in",
+    "directly or indirectly": "in any way",
 }

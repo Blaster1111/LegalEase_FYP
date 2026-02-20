@@ -1,161 +1,163 @@
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoConfig
+from transformers import PegasusTokenizer, AutoModelForSeq2SeqLM
 import torch
 import re
 from typing import List
 import time
 
 MODEL_NAME = "nsi319/legal-pegasus"
-
 device = "cuda" if torch.cuda.is_available() else "cpu"
-print("CUDA available:", torch.cuda.is_available())
-print("Using device:", device)
-
-print("Loading summarization model...")
-
-# Fix tied weights warning
-config = AutoConfig.from_pretrained(MODEL_NAME)
-config.tie_word_embeddings = False
-
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-model = AutoModelForSeq2SeqLM.from_pretrained(
-    MODEL_NAME,
-    config=config,
-    torch_dtype=torch.float16 if device == "cuda" else torch.float32
-).to(device)
-
-model.eval()
-print("Model loaded.")
 
 
-# -------- text cleaning --------
+# ---------------- LOAD MODEL ONCE ----------------
+def load_summarizer():
+    print("Loading summarization model...")
+
+    # ✅ FORCE PEGASUS TOKENIZER (SentencePiece)
+    tokenizer = PegasusTokenizer.from_pretrained(MODEL_NAME)
+
+    model = AutoModelForSeq2SeqLM.from_pretrained(
+        MODEL_NAME
+    ).to(device)
+
+    model.eval()
+    print("Model loaded.")
+
+    return tokenizer, model
+
+
+# ---------------- TEXT CLEANING ----------------
 def clean_text(text: str) -> str:
     text = re.sub(r'Page\s*\d+\s*of\s*\d+', '', text, flags=re.IGNORECASE)
     text = re.sub(r'This template is authored by.*?Lawyered\.in\.', '', text, flags=re.DOTALL | re.IGNORECASE)
     text = re.sub(r'In case of any queries.*?expert advisors\.', '', text, flags=re.DOTALL | re.IGNORECASE)
-    text = re.sub(r'\[Please fill in.*?\]', '', text, flags=re.DOTALL)
     text = re.sub(r'<<.*?>>', '', text)
     text = re.sub(r'<.*?>', '', text)
     text = re.sub(r'Signature\s*\d+.*?Date', '', text, flags=re.DOTALL | re.IGNORECASE)
     text = re.sub(r'Désignations.*?Date', '', text, flags=re.DOTALL | re.IGNORECASE)
+    text = re.sub(r'\[.*?\]', '', text, flags=re.DOTALL)
+    text = re.sub(r'\(hereinafter.*?\)', '', text, flags=re.DOTALL)
+    text = re.sub(r'IN WITNESS WHEREOF.*', '', text, flags=re.DOTALL | re.IGNORECASE)
+    text = re.sub(r'WHEREAS\b.*?(?=\d+\.)', '', text, flags=re.DOTALL | re.IGNORECASE)
     text = re.sub(r'\s+', ' ', text)
     return text.strip()
 
 
-# -------- chunking with overlap --------
-def chunk_text(text: str, max_tokens: int = 800, overlap: int = 80) -> List[str]:
-    if not text:
-        return []
+# ---------------- CLAUSE EXTRACTION ----------------
+def extract_key_clauses(text: str) -> str:
+    lines = text.split('.')
+    result = []
+    for line in lines:
+        line = line.strip()
+        if len(line.split()) >= 8:
+            result.append(line + '.')
+    return ' '.join(result)
 
-    tokens = tokenizer.encode(text, add_special_tokens=False)
+
+# ---------------- TOKEN CHUNKING ----------------
+def chunk_text_tokens(text: str, tokenizer, max_tokens: int = 900) -> List[str]:
+    tokens = tokenizer.encode(text)
     chunks = []
-    start = 0
-    total = len(tokens)
-
-    while start < total:
-        end = min(start + max_tokens, total)
-        chunk_tokens = tokens[start:end]
-        chunk = tokenizer.decode(
-            chunk_tokens,
-            skip_special_tokens=True,
-            clean_up_tokenization_spaces=True
-        ).strip()
-
-        if chunk:
-            chunks.append(chunk)
-
-        if end == total:
-            break
-
-        start = max(0, end - overlap)
-
+    for i in range(0, len(tokens), max_tokens):
+        chunk = tokenizer.decode(tokens[i:i + max_tokens], skip_special_tokens=True)
+        chunks.append(chunk)
     return chunks
 
 
-# -------- remove duplicate sentences --------
-def remove_duplicate_sentences(text: str) -> str:
-    sentences = re.split(r'(?<=[.!?])\s+', text)
-    seen = set()
-    uniq = []
-
-    for s in sentences:
-        norm = s.strip().lower()
-        if not norm:
-            continue
-        if norm in seen:
-            continue
-        seen.add(norm)
-        uniq.append(s.strip())
-
-    return " ".join(uniq)
+# ---------------- SANITY CHECK ----------------
+def is_valid_chunk(text: str) -> bool:
+    words = text.split()
+    if len(words) < 30:
+        return False
+    avg_word_len = sum(len(w) for w in words) / len(words)
+    if avg_word_len < 3:
+        return False
+    alpha_ratio = sum(1 for w in words if w.isalpha()) / len(words)
+    if alpha_ratio < 0.4:
+        return False
+    return True
 
 
-# -------- summarization --------
-def summarize_text(
-    text: str,
-    max_length: int = 150,
-    min_length: int = 50,
-    final_sentence_limit: int = 8
-) -> str:
+# ---------------- MAIN SUMMARIZER ----------------
+def summarize_text(text: str, tokenizer, model) -> str:
     if not text or not text.strip():
         return ""
 
-    print("cleaning")
+    print("Cleaning text...")
     text = clean_text(text)
 
-    if len(text.split()) < 40:
-        return text
-    
-    print("chunking")
+    print("Extracting key clauses...")
+    text = extract_key_clauses(text)
 
-    chunks = chunk_text(text, max_tokens=800, overlap=80)
-    if not chunks:
-        return ""
-    
-    print("Summarizing")
+    word_count = len(text.split())
+
+    # -------- SHORT DOC --------
+    if word_count < 250:
+        print("Short document detected")
+
+        text = "summarize: " + text
+
+        inputs = tokenizer(
+            text,
+            return_tensors="pt",
+            max_length=1024,
+            truncation=True,
+            padding="longest"
+        ).to(device)
+
+        with torch.no_grad():
+            outputs = model.generate(
+                inputs["input_ids"],
+                attention_mask=inputs["attention_mask"],
+                max_length=80,
+                min_length=20,
+                num_beams=4,
+                length_penalty=2.0,
+                no_repeat_ngram_size=3,
+                early_stopping=True
+            )
+
+        return tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+    # -------- LONG DOC --------
+    print("Chunking text...")
+    chunks = chunk_text_tokens(text, tokenizer)
 
     summaries = []
 
     for i, chunk in enumerate(chunks):
-        if len(chunk.split()) < 10:
+        if not is_valid_chunk(chunk):
             continue
 
         print(f"Summarizing chunk {i+1}/{len(chunks)}...")
-        start_time = time.time()
+        start = time.time()
+
+        chunk = "summarize: " + chunk
 
         inputs = tokenizer(
             chunk,
             return_tensors="pt",
+            max_length=1024,
             truncation=True,
-            max_length=1024
+            padding="longest"
         ).to(device)
 
         with torch.no_grad():
-            summary_ids = model.generate(
-                **inputs,
-                max_new_tokens=max_length,
-                do_sample=False,
-                num_beams=1,
-                no_repeat_ngram_size=2
+            outputs = model.generate(
+                inputs["input_ids"],
+                attention_mask=inputs["attention_mask"],
+                max_length=180,
+                min_length=40,
+                num_beams=5,
+                length_penalty=2.0,
+                no_repeat_ngram_size=3,
+                early_stopping=True
             )
 
-        summary = tokenizer.decode(
-            summary_ids[0],
-            skip_special_tokens=True,
-            clean_up_tokenization_spaces=True
-        )
+        summary = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
         if summary:
-            summaries.append(summary.strip())
+            summaries.append(summary)
 
-        print(f"Chunk done in {time.time() - start_time:.2f}s")
+        print(f"Chunk time: {time.time()-start:.2f}s")
 
-    if not summaries:
-        return ""
-
-    full_summary = " ".join(summaries)
-    full_summary = remove_duplicate_sentences(full_summary)
-
-    sentences = re.split(r'(?<=[.!?])\s+', full_summary)
-    final_sentences = [s.strip() for s in sentences if s.strip()][:final_sentence_limit]
-
-    return " ".join(final_sentences).strip()
+    return " ".join(summaries)
